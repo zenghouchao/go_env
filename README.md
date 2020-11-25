@@ -1,2 +1,2 @@
 # go_env
-Read the ENV file configuration
+Read the .env file project configuration
