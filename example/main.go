@@ -21,4 +21,6 @@ func main() {
 	database := params.GetSection("DATABASE", "DATABASE")
 	fmt.Println(database)
 
+	fmt.Println(env.GetOsEnv("GOPATH"))
+
 }

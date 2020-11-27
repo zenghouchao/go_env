@@ -2,6 +2,7 @@ package go_env
 
 import (
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -78,4 +79,10 @@ func (env *EnvParams) GetSection(moduleName, keyName string) string {
 		}
 	}
 	return ""
+}
+
+
+// get the system environment variable
+func GetOsEnv(key string) string {
+	return os.Getenv(key)
 }
