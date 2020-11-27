@@ -21,7 +21,6 @@ func (env *EnvParams) ParseEnvFile(fileName string) {
 	var moduleName string
 	moduleMap := make([]map[string]string, 0)
 	for i := 0; i < len(lines); i++ {
-
 		thisModule := make(map[string]string, 0)
 		line := strings.Replace(lines[i], "\r", "", -1)
 		line = strings.TrimSpace(line)
@@ -37,6 +36,11 @@ func (env *EnvParams) ParseEnvFile(fileName string) {
 			}
 			moduleName = strings.ToLower(module)
 			moduleMap = nil
+			continue
+		}
+
+		// deprecated
+		if strings.HasPrefix(line, "#") {
 			continue
 		}
 
