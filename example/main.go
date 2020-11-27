@@ -12,9 +12,9 @@ var osType = runtime.GOOS
 func main() {
 	dir, _ := os.Getwd()
 	if osType == "windows" {
-		dir = dir + "\\.env"
+		dir +=  "\\.env"
 	} else if osType == "linux" {
-		dir = dir + "/.env"
+		dir += dir + "/.env"
 	}
 	var params env.EnvParams
 	params.ParseEnvFile(dir)
