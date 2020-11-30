@@ -40,8 +40,8 @@ func (env *EnvParams) ParseEnvFile(fileName string) {
 			continue
 		}
 
-		// deprecated
-		if strings.HasPrefix(line, "#") {
+		// deprecated or ignored
+		if isIgnoredLine(line) {
 			continue
 		}
 
@@ -81,6 +81,10 @@ func (env *EnvParams) GetSection(moduleName, keyName string) string {
 	return ""
 }
 
+func isIgnoredLine(line string) bool {
+	line = strings.TrimSpace(line)
+	return len(line) == 0 || strings.HasPrefix(line, "#")
+}
 
 // get the system environment variable
 func GetOsEnv(key string) string {
