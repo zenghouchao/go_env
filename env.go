@@ -88,5 +88,6 @@ func isIgnoredLine(line string) bool {
 
 // get the system environment variable
 func GetOsEnv(key string) string {
+	key = strings.TrimSpace(key)
 	return os.Getenv(key)
 }
