@@ -30,7 +30,10 @@ func (env *EnvParams) ParseEnvFile(fileName string) {
 		}
 
 		// has module name
-		if strings.HasPrefix(line, "[") && strings.HasSuffix(line, "]") {
+		if strings.HasPrefix(line, "[") {
+			if !strings.HasSuffix(line, "]") {
+				panic("Invalid .env configuration file")
+			}
 			module := line[1 : len(line)-1]
 			if module == "" {
 				continue
